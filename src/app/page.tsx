@@ -45,27 +45,31 @@ ChartJS.register(
 let hovering = false,
   tooltips = ["such tooltip", "blah blah"];
 
-export const options = {
+const options = {
   responsive: true,
   plugins: {
     legend: {
       position: "top" as const,
-      onHover: function (event, legendItem) {
-        if (hovering) {
-          return;
-        }
-        hovering = true;
-        let tooltip = document.getElementById("tooltip");
-        tooltip.innerHTML = tooltips[legendItem.datasetIndex];
-        tooltip.style.left = event.x + "px";
-        tooltip.style.top = event.y + "px";
-      },
-      onLeave: function () {
-        let tooltip = document.getElementById("tooltip");
-        hovering = false;
-        tooltip.innerHTML = "";
-      },
     },
+
+    // legend: {
+    //   position: "top" as const,
+    //   onHover: function (event, legendItem) {
+    //     if (hovering) {
+    //       return;
+    //     }
+    //     hovering = true;
+    //     let tooltip = document.getElementById("tooltip");
+    //     tooltip.innerHTML = tooltips[legendItem.datasetIndex];
+    //     tooltip.style.left = event.x + "px";
+    //     tooltip.style.top = event.y + "px";
+    //   },
+    //   onLeave: function () {
+    //     let tooltip = document.getElementById("tooltip");
+    //     hovering = false;
+    //     tooltip.innerHTML = "";
+    //   },
+    // },
   },
 };
 
@@ -89,7 +93,7 @@ export default function App() {
         // options:{
         //   legend:{onHover((rowObject)=> rowObject[]) }
         // };
-        // backgroundColor: "rgba(255, 99, 132, 0.5)",
+        //backgroundColor: "rgba(255, 99, 132, 0.5)",
       }));
 
       setDatasets(datasets);
@@ -111,6 +115,7 @@ export default function App() {
           .filter((key) => categories.includes(key))
           .map((key) => Number(rowObject[key]))
       );
+    if (!allData || !numeric_dataset || !datasets) return;
     //todo filter yourself
     console.log(numeric_dataset);
 
@@ -180,13 +185,15 @@ export default function App() {
 
   return (
     <div className="maindiv">
-      <h1>Let's find you some teammates!</h1>
+      <h1>Let&apos;s find you some teammates!</h1>
       <h3> 1. Select your Alias:</h3>
       <select
-        onChange={(e) => calculateAndSetChartData(e.target.value as number)}
+        onChange={(e) => calculateAndSetChartData(Number(e.target.value))}
       >
         {allData.map((row, i) => (
-          <option value={i}>{row["ALIAS"]}</option>
+          <option key={i} value={i}>
+            {row["ALIAS"]}
+          </option>
         ))}
       </select>
       <h3> 2. These three complement your skills the best:</h3>
