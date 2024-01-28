@@ -31,3 +31,13 @@ body {
     text-wrap: balance;
   }
 }
+
+.maindiv{
+  margin:50px;
+}
+
+h3{
+  font-weight: 200;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
