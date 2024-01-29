@@ -189,8 +189,8 @@ export default function App() {
       <div className="paragraphdiv">
         <h1>Let&apos;s find you some teammates!</h1>
         <p>
-          This interactive chart visualizes students who's skills complements
-          eachother well.
+          This interactive chart visualizes students who&apos;s skills
+          complements eachother well.
         </p>
         <p>
           The groups are suggested based on an algorithm that calculates the
@@ -201,6 +201,7 @@ export default function App() {
           The three people with the biggest summed difference in skillleves will
           complement you the best. Those will be displayed in the chart
         </p>
+        <p>Scroll down to see their hobbies!</p>
       </div>
       <h3> 1. Select your Alias:</h3>
       <select
@@ -223,7 +224,7 @@ export default function App() {
         {chartData && chartData.datasets.length > 0 && allData && (
           <React.Fragment>
             <div className="purpleContainer">
-              <h3>{chartData.datasets[0].label}'s Hobbies:</h3>
+              <h3>{chartData.datasets[0].label}&apos;s Hobbies:</h3>
               <p>
                 {
                   allData.find(
@@ -233,7 +234,7 @@ export default function App() {
               </p>
             </div>
             <div className="redContainer">
-              <h3>{chartData.datasets[1].label}'s Hobbies:</h3>
+              <h3>{chartData.datasets[1].label}&apos;s Hobbies:</h3>
               <p>
                 {
                   allData.find(
@@ -243,7 +244,7 @@ export default function App() {
               </p>
             </div>
             <div className="greenContainer">
-              <h3>{chartData.datasets[2].label}'s Hobbies:</h3>
+              <h3>{chartData.datasets[2].label}&apos;s Hobbies:</h3>
               <p>
                 {
                   allData.find(
@@ -253,7 +254,7 @@ export default function App() {
               </p>
             </div>
             <div className="blueContainer">
-              <h3>{chartData.datasets[3].label}'s Hobbies:</h3>
+              <h3>{chartData.datasets[3].label}&apos;s Hobbies:</h3>
               <p>
                 {
                   allData.find(
