@@ -158,6 +158,7 @@ export default function App() {
     const datasetsWithoutMe = datasets.filter(
       (_, index) => index != yourRowIndex
     );
+
     const otherDataset = {
       ...datasetsWithoutMe[index_and_difference[0].index],
       borderColor: "rgb(255, 0, 0)",
@@ -182,10 +183,25 @@ export default function App() {
   }
 
   if (!chartData || !allData) return "loading...";
-
+  console.log(allData);
   return (
     <div className="maindiv">
-      <h1>Let&apos;s find you some teammates!</h1>
+      <div className="paragraphdiv">
+        <h1>Let&apos;s find you some teammates!</h1>
+        <p>
+          This interactive chart visualizes students who's skills complements
+          eachother well.
+        </p>
+        <p>
+          The groups are suggested based on an algorithm that calculates the
+          differrences in knowleglevel between you and all of your classmates
+          for all skills where they are better than you.{" "}
+        </p>
+        <p>
+          The three people with the biggest summed difference in skillleves will
+          complement you the best. Those will be displayed in the chart
+        </p>
+      </div>
       <h3> 1. Select your Alias:</h3>
       <select
         onChange={(e) => calculateAndSetChartData(Number(e.target.value))}
@@ -196,9 +212,59 @@ export default function App() {
           </option>
         ))}
       </select>
-      <h3> 2. These three complement your skills the best:</h3>
-      <Line options={options} data={chartData} />
-      <div id="tooltip" className="tooltip"></div>
+      <h3>
+        {" "}
+        2. According to my algorithm, this group would complement your skills
+        the best:
+      </h3>
+      <Line options={options} data={chartData} className="chart" />
+      <h3 className="learnmore">3. Learn more about your group:</h3>
+      <div className="infoContainer">
+        {chartData && chartData.datasets.length > 0 && allData && (
+          <React.Fragment>
+            <div className="purpleContainer">
+              <h3>{chartData.datasets[0].label}'s Hobbies:</h3>
+              <p>
+                {
+                  allData.find(
+                    (row) => row["ALIAS"] === chartData.datasets[0].label
+                  )?.["Hobbies"]
+                }
+              </p>
+            </div>
+            <div className="redContainer">
+              <h3>{chartData.datasets[1].label}'s Hobbies:</h3>
+              <p>
+                {
+                  allData.find(
+                    (row) => row["ALIAS"] === chartData.datasets[1].label
+                  )?.["Hobbies"]
+                }
+              </p>
+            </div>
+            <div className="greenContainer">
+              <h3>{chartData.datasets[2].label}'s Hobbies:</h3>
+              <p>
+                {
+                  allData.find(
+                    (row) => row["ALIAS"] === chartData.datasets[2].label
+                  )?.["Hobbies"]
+                }
+              </p>
+            </div>
+            <div className="blueContainer">
+              <h3>{chartData.datasets[3].label}'s Hobbies:</h3>
+              <p>
+                {
+                  allData.find(
+                    (row) => row["ALIAS"] === chartData.datasets[3].label
+                  )?.["Hobbies"]
+                }
+              </p>
+            </div>
+          </React.Fragment>
+        )}
+      </div>
     </div>
   );
 }

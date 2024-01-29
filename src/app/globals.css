@@ -31,13 +31,77 @@ body {
     text-wrap: balance;
   }
 }
-
-.maindiv{
-  margin:50px;
+p{
+  font-size: small;
 }
-
+.maindiv{
+  margin-left:100px;
+  margin-right:100px;
+  margin-bottom:100px;
+  margin-top:50px;
+}
+.paragraphdiv{
+width: 50%;
+}
+h1{
+  font-size: x-large;
+}
 h3{
-  font-weight: 200;
+  font-weight: 400;
+  font-size: large;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.learnmore{
+  font-weight: 400;
+  font-size: large;
+  padding-top: 40px;
+  padding-bottom: 0px;
+}
+
+.tooltip {
+  background-color: #000;
+  color: #fff;
+  position: absolute;
+}
+
+.infoContainer {
+  display: flex;
+  flex: row;
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 2%;
+
+}
+.chart{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 2%;
+}
+
+.purpleContainer{
+  border: 3px solid rgb(255, 0, 234);
+  padding: 20px;
+  margin: 20px;
+  width: 25%;
+}
+.redContainer{
+  border: 3px solid rgb(247, 0, 0);
+  padding: 20px;
+  margin: 20px;
+  width: 25%;
+}
+.greenContainer{
+  border: 3px solid rgb(0, 247, 21);
+  padding: 20px;
+  margin: 20px;
+  width: 25%;
+}
+.blueContainer{
+  border: 3px solid rgb(41, 0, 247);
+  padding: 20px;
+  margin: 20px;
+  width: 25%;
 }
